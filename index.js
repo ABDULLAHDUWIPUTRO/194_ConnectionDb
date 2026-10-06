@@ -15,3 +15,11 @@ const pool = new Pool({
     password: 'Duwi2005',
     port: 5432,
 }); 
+
+app.get('/', async (req, res, next) => {
+    console.log ('TEST DATA : ');
+    pool.query('select *from biodata')
+        .then((tesData) => {
+            console.log(tesData);
+            res.send(tesData.rows);
+        })
